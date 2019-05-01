@@ -1,6 +1,9 @@
 import React from 'react'
 
 class Transactions extends React.Component {
+    state = {
+        visible: false
+    }
     render () {
         const transactionsTemplate = this.props.data.map(function(item){
             return (
