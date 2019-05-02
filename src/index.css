@@ -16,9 +16,8 @@ code {
 
 #root {
   margin-top: 50px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  margin-left: 50px;
+  display: inline-flex;
 }
 
 .transactions {
@@ -44,7 +43,16 @@ code {
   padding: 10px;
 }
 
-.fil_btn {
+.filter_buttons {
+  margin-left: 100px;
+}
+
+.fil_btn_off {
   padding: 10px;
   background: #AFCDE7;
+}
+
+.fil_btn_on {
+  padding: 10px;
+  background: #CEAD78;
 }

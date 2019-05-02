@@ -1,18 +1,20 @@
 import React from 'react'
 
 class Transactions extends React.Component {
-    state = {
-        visible: false
-    }
     render () {
         const transactionsTemplate = this.props.data.map(function(item){
             return (
-                <tr key = {item.id}>
-                    <td>{item.id}</td>
-                    <td>{item.value}</td>
-                    <td>{item.date}</td>
-                    <td>{item.type}</td>
-                </tr>
+                <React.Fragment  key = {item.id}>
+                {
+                    Object.keys(item.filters).length === 0 &&
+                    <tr>
+                        <td>{item.id}</td>
+                        <td>{item.value}</td>
+                        <td>{item.date}</td>
+                        <td>{item.type}</td>
+                    </tr>
+                }
+                </React.Fragment>
             )
         })
 
