@@ -5,9 +5,20 @@ class FilterButtons extends React.Component {
     
     render () {
 
-        const Buttons = this.props.handlers.map(function(item){
+        const Buttons = this.props.buttons.map(function(item){
+            const onClick = (e) => {
+                item.event(item.active, item.id);
+                item.active = item.active ? false : true
+            }
             return(
-                 <button className = "fil_btn_off" onClick = {item.event} key = {item.name}>{item.name}</button>
+                <React.Fragment>
+                {
+                    !item.active && <button className = "fil_btn_off" onClick = {onClick} key = {item.id}>{item.name}</button>
+                }
+                {
+                    item.active && <button className = "fil_btn_on" onClick = {onClick} key = {item.id}>{item.name}</button>
+                }
+                </React.Fragment>
             )
         })
 

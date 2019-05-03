@@ -11,90 +11,90 @@ class App extends React.Component {
       return item
     }),
   }
-  handlers = [
+  buttons = [
     {
+      id: 1,
       name: "Доход",
-      event: (e) =>  {
-        if(e.currentTarget.className === "fil_btn_off")
+      active: false,
+      event: (active, id) =>  {
+        if(!active)
         {
-          e.currentTarget.className = "fil_btn_on"
           this.setState({t_data : this.state.t_data.map(function(item){
             if(item.type !== "доход")
-                item.filters["Доход"] = 1
+                item.filters[id] = 1
             return item
           })})
         } else
         {
-          e.currentTarget.className = "fil_btn_off"
           this.setState({t_data : this.state.t_data.map(function(item){
-            delete item.filters["Доход"]
+            delete item.filters[id]
             return item
           })})
         }
       }
     },
     {
+      id: 2,
       name: "Расход",
-      event: (e) =>  {
-        if(e.currentTarget.className === "fil_btn_off")
+      active: false,
+      event: (active, id) =>  {
+        if(!active)
         {
-          e.currentTarget.className = "fil_btn_on"
           this.setState({t_data : this.state.t_data.map(function(item){
             if(item.type !== "расход")
-                item.filters["Расход"] = 1
+                item.filters[id] = 1
             return item
           })})
         } else
         {
-          e.currentTarget.className = "fil_btn_off"
           this.setState({t_data : this.state.t_data.map(function(item){
-            delete item.filters["Расход"]
+            delete item.filters[id]
             return item
           })})
         }
       }
     },
     {
+      id: 3,
       name: "Больше 1000",
-      event: (e) =>  {
-        if(e.currentTarget.className === "fil_btn_off")
+      active: false,
+      event: (active, id) =>  {
+        if(!active)
         {
-          e.currentTarget.className = "fil_btn_on"
           this.setState({t_data : this.state.t_data.map(function(item){
             if(item.value <= 1000 )
-                item.filters["Больше 1000"] = 1
+                item.filters[id] = 1
             return item
           })})
         } else
         {
-          e.currentTarget.className = "fil_btn_off"
           this.setState({t_data : this.state.t_data.map(function(item){
-            delete item.filters["Больше 1000"]
+            delete item.filters[id]
             return item
           })})
         }
       }
     },
     {
+      id: 4,
       name: "Последний месяц",
-      event: (e) =>  {
-        if(e.currentTarget.className === "fil_btn_off")
+      active: false,
+      event: (active, id) =>  {
+        if(!active)
         {
-          e.currentTarget.className = "fil_btn_on"
           this.setState({t_data : this.state.t_data.map(function(item){
             let date = new Date(item.date)
             let monthBegin = new Date()
             monthBegin.setDate(1)
             monthBegin.setHours(0,0,0,0)
             if(date < monthBegin)
-              item.filters["Последний месяц"] = 1
+              item.filters[id] = 1
             return item
           })})
         } else
         {
-          e.currentTarget.className = "fil_btn_off"
-          this.setState({t_data : this.state.t_data.map(function(item){
-            delete item.filters["Последний месяц"]
+            this.setState({t_data : this.state.t_data.map(function(item){
+            delete item.filters[id]
             return item
           })})
         }
@@ -106,7 +106,7 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <Transactions data = { this.state.t_data }/>
-        <FilterButtons handlers = {this.handlers}/>
+        <FilterButtons buttons = {this.buttons}/>
       </React.Fragment>
     )
   }
