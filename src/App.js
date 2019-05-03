@@ -11,6 +11,14 @@ class App extends React.Component {
       return item
     }),
   }
+
+  deleteFilter = (id) => {
+    this.setState({t_data : this.state.t_data.map(function(item){
+      delete item.filters[id]
+      return item
+    })})
+  }
+
   buttons = [
     {
       id: 1,
@@ -24,13 +32,7 @@ class App extends React.Component {
                 item.filters[id] = 1
             return item
           })})
-        } else
-        {
-          this.setState({t_data : this.state.t_data.map(function(item){
-            delete item.filters[id]
-            return item
-          })})
-        }
+        } else this.deleteFilter(id)
       }
     },
     {
@@ -45,13 +47,7 @@ class App extends React.Component {
                 item.filters[id] = 1
             return item
           })})
-        } else
-        {
-          this.setState({t_data : this.state.t_data.map(function(item){
-            delete item.filters[id]
-            return item
-          })})
-        }
+        } else this.deleteFilter(id)
       }
     },
     {
@@ -66,13 +62,7 @@ class App extends React.Component {
                 item.filters[id] = 1
             return item
           })})
-        } else
-        {
-          this.setState({t_data : this.state.t_data.map(function(item){
-            delete item.filters[id]
-            return item
-          })})
-        }
+        } else this.deleteFilter(id)
       }
     },
     {
@@ -91,13 +81,7 @@ class App extends React.Component {
               item.filters[id] = 1
             return item
           })})
-        } else
-        {
-            this.setState({t_data : this.state.t_data.map(function(item){
-            delete item.filters[id]
-            return item
-          })})
-        }
+        } else this.deleteFilter(id)
       }
     }
   ]
